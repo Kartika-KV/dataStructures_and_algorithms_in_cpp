@@ -8,31 +8,37 @@ Ninjas Coding to Welcome
 
 #include<bits/stdc++.h>
 using namespace std;
-void reverse_word_wise(char input[]){
-       vector<string> temp;
-       string str="";
-       int size=strlen(input);
-       for(int i=0;i<=size;i++){
-            if(input[i]==' '){
-                temp.push_back(str);
-                str="";
-            }
-            else{
-                str+=input[i];
-            }
-       }
-       reverse(temp.begin(),temp.end());
-       string ans="";
-       for(int i=0;i<temp.size();i++){
-           if(i!=temp.size()-1){
-                 ans+=temp[i]+" ";
-           }
-           else
-               ans+=temp[i];
+void reverseStringWordWise(char input[]){
+   vector <string> words;
+    string word="";
+    
+    int size=strlen(input);
+    for(int i=0;i<=size;i++){
+        
+        if(input[i]!=' ' && input[i]!='\0')
+            word+=input[i];
+        else{
+            words.push_back(word);
+            word="";
+        }
+    }
+    
+    reverse(words.begin(),words.end());
+    
+    string ans="";
+    
 
-       }
+    for(int i=0;i<words.size();i++){
+        if(i!=words.size()-1)
+            ans+=words[i]+" ";
+        else
+            ans+=words[i];
+    }
+    
+    
+    strcpy(input,ans.c_str());
 
-       strcpy(input,ans.c_str());
+   
 }
 int main(){
     char input[1000];
